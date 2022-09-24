@@ -1,21 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import {
-  combineLatest,
-  concatMap,
-  groupBy,
-  map,
-  mergeMap,
-  Observable,
-  of,
-  reduce,
-  scan,
-  startWith,
-  tap,
-  toArray,
-  zip,
-} from 'rxjs';
+import { combineLatest, map, Observable, startWith } from 'rxjs';
 import {
   ServiceType,
   UserServiceInfo,
@@ -67,6 +53,5 @@ export class MyServicesPageComponent implements OnInit {
         };
       })
     );
-    this.services$.subscribe(console.log);
   }
 }
