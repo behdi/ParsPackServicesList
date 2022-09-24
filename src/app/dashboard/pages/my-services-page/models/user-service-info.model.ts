@@ -3,6 +3,7 @@ export interface UserServiceInfoResponse {
   message: string;
   errors: [];
   data: UserServiceInfo[];
+  metadata: UserServiceMetadata;
 }
 
 export interface UserServiceInfo {
@@ -25,3 +26,7 @@ export enum ServiceType {
 }
 
 export type ServiceStatus = 'Active' | 'Pending' | 'Cancelled';
+
+export type UserServiceMetadata = {
+  [key in ServiceType]?: number;
+};
