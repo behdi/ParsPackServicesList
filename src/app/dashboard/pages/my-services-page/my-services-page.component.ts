@@ -5,6 +5,7 @@ import {
   groupBy,
   map,
   mergeMap,
+  Observable,
   of,
   reduce,
   scan,
@@ -12,7 +13,11 @@ import {
   toArray,
   zip,
 } from 'rxjs';
-import { ServiceType } from './models/user-service-info.model';
+import {
+  ServiceType,
+  UserServiceInfo,
+  UserServiceMetadata,
+} from './models/user-service-info.model';
 import { UserServicesService } from './services/user-services.service';
 
 @Component({
@@ -22,27 +27,16 @@ import { UserServicesService } from './services/user-services.service';
 })
 export class MyServicesPageComponent implements OnInit {
   searchBar = new FormControl<string | null>(null);
-
+  services$!: Observable<{
+    data: UserServiceInfo[];
+    metadata: UserServiceMetadata;
+  }>;
   constructor(private hostingServices: UserServicesService) {}
 
   ngOnInit(): void {
-    this.hostingServices
-      .getCurrentUsersServices()
-      .pipe(
-        map((res) => {
-          return {
-            ...res,
-            metadata: res.data
-              .map(({ type }) => type)
-              .reduce((names: { [k in ServiceType]?: number }, name) => {
-                const count = names[name] || 0;
-                names[name] = count + 1;
-                return names;
-              }, {}),
-          };
-        }),
-        tap((res) => console.log(res))
-      )
-      .subscribe();
+    this.services$ = this.hostingServices.getCurrentUsersServices();
+    this.services$
+      .pipe(map((r) => r.metadata))
+      .subscribe((res) => console.log(res[ServiceType.CDN]));
   }
 }

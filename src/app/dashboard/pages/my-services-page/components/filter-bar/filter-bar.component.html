@@ -23,8 +23,11 @@
           [src]="tab.icon"
         />
         <span class="tab-name" [nzSpan]="24" nz-col>{{ tab.name }}</span>
-        <span class="tab-count">
-          <span class="fa-number">{{ tab.count }}</span> سرویس
+        <span class="tab-count" *ngIf="servicesMetadata">
+          <span class="fa-number">{{
+            tab.value ? servicesMetadata[tab.value] : getTotalServices()
+          }}</span>
+          سرویس
         </span>
       </a>
     </ng-template>
