@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import {
+  combineLatest,
   concatMap,
   groupBy,
   map,
@@ -9,6 +11,7 @@ import {
   of,
   reduce,
   scan,
+  startWith,
   tap,
   toArray,
   zip,
@@ -26,17 +29,44 @@ import { UserServicesService } from './services/user-services.service';
   styleUrls: ['./my-services-page.component.less'],
 })
 export class MyServicesPageComponent implements OnInit {
-  searchBar = new FormControl<string | null>(null);
+  searchBar: FormControl<string | null>;
   services$!: Observable<{
     data: UserServiceInfo[];
     metadata: UserServiceMetadata;
   }>;
-  constructor(private hostingServices: UserServicesService) {}
+  selectedFilter$!: Observable<ServiceType | null>;
+  searchParam$: Observable<string | null>;
+
+  constructor(
+    private hostingServices: UserServicesService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.searchBar = new FormControl<string | null>(null);
+    this.searchParam$ = this.searchBar.valueChanges.pipe(startWith(''));
+  }
 
   ngOnInit(): void {
-    this.services$ = this.hostingServices.getCurrentUsersServices();
-    this.services$
-      .pipe(map((r) => r.metadata))
-      .subscribe((res) => console.log(res[ServiceType.CDN]));
+    const services$ = this.hostingServices.getCurrentUsersServices();
+    this.selectedFilter$ = this.activatedRoute.queryParamMap.pipe(
+      map((qParam) => qParam.get('filter') as ServiceType)
+    );
+
+    this.services$ = combineLatest([
+      this.searchParam$,
+      this.selectedFilter$,
+      services$,
+    ]).pipe(
+      map(([searchQuery, filter, serviceList]) => {
+        return {
+          ...serviceList,
+          data: serviceList.data.filter(
+            (data) =>
+              (filter ? data.type === filter : data.type) &&
+              data.name.includes(searchQuery ?? '')
+          ),
+        };
+      })
+    );
+    this.services$.subscribe(console.log);
   }
 }

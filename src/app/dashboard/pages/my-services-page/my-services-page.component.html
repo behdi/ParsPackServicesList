@@ -1,4 +1,4 @@
-<main class="card" *ngIf="{services: services$ | async} as data">
+<main class="card" *ngIf="services$ | async as services">
   <header
     nz-row
     nzJustify="space-between"
@@ -13,6 +13,9 @@
   </section>
 
   <section class="filter-selector">
-    <app-filter-bar [servicesMetadata]="data.services?.metadata!"></app-filter-bar>
+    <app-filter-bar
+      *ngIf="services.metadata"
+      [servicesMetadata]="services.metadata"
+    ></app-filter-bar>
   </section>
 </main>

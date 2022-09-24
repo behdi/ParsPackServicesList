@@ -52,10 +52,6 @@ export class FilterBarComponent {
 
   constructor() {}
 
-  onTabSelect(selectedIdx: number) {
-    console.log(this.filterOptions[selectedIdx]);
-  }
-
   getTotalServices() {
     return Object.values(this.servicesMetadata).reduce(
       (acc, curr) => acc + curr
