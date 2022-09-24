@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, map, Observable, startWith } from 'rxjs';
+import {
+  combineLatest,
+  debounceTime,
+  distinctUntilChanged,
+  map,
+  Observable,
+  startWith,
+} from 'rxjs';
 import {
   ServiceType,
   UserServiceInfo,
@@ -21,14 +28,12 @@ export class MyServicesPageComponent implements OnInit {
     metadata: UserServiceMetadata;
   }>;
   selectedFilter$!: Observable<ServiceType | null>;
-  searchParam$: Observable<string | null>;
 
   constructor(
     private hostingServices: UserServicesService,
     private activatedRoute: ActivatedRoute
   ) {
     this.searchBar = new FormControl<string | null>(null);
-    this.searchParam$ = this.searchBar.valueChanges.pipe(startWith(''));
   }
 
   ngOnInit(): void {
@@ -36,9 +41,14 @@ export class MyServicesPageComponent implements OnInit {
     this.selectedFilter$ = this.activatedRoute.queryParamMap.pipe(
       map((qParam) => qParam.get('filter') as ServiceType)
     );
+    const searchParam$ = this.searchBar.valueChanges.pipe(
+      startWith(''),
+      debounceTime(900),
+      distinctUntilChanged()
+    );
 
     this.services$ = combineLatest([
-      this.searchParam$,
+      searchParam$,
       this.selectedFilter$,
       services$,
     ]).pipe(
