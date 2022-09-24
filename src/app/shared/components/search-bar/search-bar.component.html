@@ -1,0 +1,18 @@
+<nz-input-group [nzSuffix]="inputClearTpl">
+  <input
+    type="text"
+    nz-input
+    [formControl]="searchBarCtrl"
+    [placeholder]="placeholderTxt"
+  />
+</nz-input-group>
+<ng-template #inputClearTpl>
+  <span
+    nz-icon
+    class="ant-input-clear-icon"
+    nzTheme="fill"
+    nzType="close-circle"
+    *ngIf="searchBarCtrl.value"
+    (click)="searchBarCtrl.reset()"
+  ></span>
+</ng-template>
