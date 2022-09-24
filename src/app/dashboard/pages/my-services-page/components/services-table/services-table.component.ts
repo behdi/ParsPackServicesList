@@ -12,6 +12,8 @@ import { UserServiceStatus } from '../../models/user-service-status.model';
 })
 export class ServicesTableComponent {
   @Input() servicesList!: UserServiceInfo[];
+  readonly sortByName = (a: UserServiceInfo, b: UserServiceInfo) =>
+    a.name.localeCompare(b.name);
 
   constructor() {}
 
