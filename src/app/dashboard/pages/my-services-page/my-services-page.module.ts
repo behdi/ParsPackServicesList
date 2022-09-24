@@ -5,17 +5,22 @@ import { MyServicesPageComponent } from './my-services-page.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { NzSegmentedModule } from 'ng-zorro-antd/segmented';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [MyServicesPageComponent],
+  declarations: [MyServicesPageComponent, FilterBarComponent],
   imports: [
     CommonModule,
     MyServicesPageRoutingModule,
     NzIconModule,
     NzGridModule,
     SharedModule,
-    NzSegmentedModule,
+    NzTabsModule,
+    NzRadioModule,
+    FormsModule
   ],
 })
 export class MyServicesPageModule {}

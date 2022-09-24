@@ -1,0 +1,23 @@
+<nz-tabset nzCentered (nzSelectChange)="test($event)">
+  <nz-tab
+    *ngFor="let tab of filterOptions; index as idx"
+    [nzTitle]="titleTemplate"
+    #tabRef
+  >
+    <ng-template #titleTemplate>
+      <div nz-row nzJustify="center" nzAlign="middle">
+        <img
+          class="tab-icon"
+          [ngClass]="{ active: tabRef.isActive }"
+          [nzSpan]="24"
+          nz-col
+          [src]="tab.icon"
+        />
+        <span class="tab-name" [nzSpan]="24" nz-col>{{ tab.name }}</span>
+        <span class="tab-count">
+          <span class="fa-number">{{ tab.count }}</span> سرویس
+        </span>
+      </div>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>
