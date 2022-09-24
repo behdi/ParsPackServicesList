@@ -1,6 +1,14 @@
 <main class="card">
-  <header nz-row nzJustify="space-between" nzAlign="middle" class="services-header">
+  <header
+    nz-row
+    nzJustify="space-between"
+    nzAlign="middle"
+    class="services-header"
+  >
     <h3 nz-col>سرویس‌های من</h3>
     <span nz-col nz-icon nzType="ellipsis" nzTheme="outline"></span>
   </header>
+  <section class="search">
+    <app-search-bar [searchBarCtrl]="searchBar"></app-search-bar>
+  </section>
 </main>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-my-services-page',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-services-page.component.less']
 })
 export class MyServicesPageComponent implements OnInit {
-
+  searchBar = new FormControl<string|null>(null);
   constructor() { }
 
   ngOnInit(): void {
