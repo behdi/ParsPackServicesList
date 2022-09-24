@@ -16,18 +16,27 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>
-        <!-- <nz-badge [nzColor]="getStatusColor(data.status)"></nz-badge> -->
-        <img class="service-icon" [src]="'assets/service-icons/' + data.type + '.svg'" />
-        {{ data.name }}
-      </td>
-      <td nzAlign="center" class="fa-number">
-        {{ data.amount | number }} تومان
-      </td>
-      <td nzAlign="center">{{ data.nextduedate }}</td>
-      <td nzAlign="center">
-        <button class="action-button" nzBlock nz-button></button>
-      </td>
+      <ng-container
+        *ngIf="getServiceStatusData(data.status) as serviceStatusTranslator"
+      >
+        <td>
+          <nz-badge [nzColor]="serviceStatusTranslator.color"></nz-badge>
+          <img
+            class="service-icon"
+            [src]="'assets/service-icons/' + data.type + '.svg'"
+          />
+          {{ data.name }}
+        </td>
+        <td nzAlign="center" class="fa-number">
+          {{ data.amount | number }} تومان
+        </td>
+        <td nzAlign="center">{{ data.nextduedate | shamsiDate }}</td>
+        <td nzAlign="center">
+          <button class="action-button" nzType="primary" nzGhost nzBlock nz-button [disabled]="data.status === 'Cancelled'">
+            {{ serviceStatusTranslator.action }}
+          </button>
+        </td>
+      </ng-container>
     </tr>
   </tbody>
 </nz-table>

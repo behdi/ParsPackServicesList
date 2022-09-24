@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ServicesTableComponent } from './components/services-table/services-table.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzBadgeModule } from 'ng-zorro-antd/badge';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     NzRadioModule,
     NzTableModule,
     FormsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzBadgeModule,
   ],
 })
 export class MyServicesPageModule {}
