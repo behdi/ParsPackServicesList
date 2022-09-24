@@ -55,7 +55,7 @@ export class FilterBarComponent {
 
   constructor() {}
 
-  test(event: any) {
-    console.log(event);
+  onTabSelect(selectedIdx: number) {
+    console.log(this.filterOptions[selectedIdx]);
   }
 }

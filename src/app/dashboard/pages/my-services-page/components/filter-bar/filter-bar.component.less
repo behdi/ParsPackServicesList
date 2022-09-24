@@ -1,3 +1,8 @@
+.tab {
+    text-decoration: none;
+    color: inherit;
+}
+
 .tab-name {
   text-align: center;
 }
@@ -13,9 +18,19 @@
 }
 
 .tab-count {
-    background: #F2F8FA;
-    border-radius: .4rem;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    font-size: 0.7rem;
+  background: #f2f8fa;
+  border-radius: 0.4rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.7rem;
+}
+
+@media screen and (max-height: 760px) {
+  .tab-icon {
+    display: none;
+  }
+
+  .tab-count {
+    display: none;
+  }
 }
