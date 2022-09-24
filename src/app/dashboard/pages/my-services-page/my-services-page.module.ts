@@ -9,9 +9,16 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { FormsModule } from '@angular/forms';
+import { ServicesTableComponent } from './components/services-table/services-table.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 @NgModule({
-  declarations: [MyServicesPageComponent, FilterBarComponent],
+  declarations: [
+    MyServicesPageComponent,
+    FilterBarComponent,
+    ServicesTableComponent,
+  ],
   imports: [
     CommonModule,
     MyServicesPageRoutingModule,
@@ -20,7 +27,9 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     NzTabsModule,
     NzRadioModule,
-    FormsModule
+    NzTableModule,
+    FormsModule,
+    NzButtonModule
   ],
 })
 export class MyServicesPageModule {}

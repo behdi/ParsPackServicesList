@@ -1,0 +1,33 @@
+<nz-table
+  *ngIf="servicesList"
+  [nzFrontPagination]="false"
+  [nzScroll]="{ y: '50vh', x: '0vh' }"
+  #basicTable
+  [nzData]="servicesList"
+  dir="rtl"
+>
+  <thead>
+    <tr>
+      <th>نام/مشخصه</th>
+      <th nzAlign="center">هزینه</th>
+      <th nzAlign="center">تاریخ سر رسید</th>
+      <th nzAlign="center">عملیات</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>
+        <!-- <nz-badge [nzColor]="getStatusColor(data.status)"></nz-badge> -->
+        <img class="service-icon" [src]="'assets/service-icons/' + data.type + '.svg'" />
+        {{ data.name }}
+      </td>
+      <td nzAlign="center" class="fa-number">
+        {{ data.amount | number }} تومان
+      </td>
+      <td nzAlign="center">{{ data.nextduedate }}</td>
+      <td nzAlign="center">
+        <button class="action-button" nzBlock nz-button></button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -21,32 +21,32 @@ export class FilterBarComponent {
     {
       name: 'Hosting',
       value: ServiceType.Hosting,
-      icon: '/assets/service-icons/hosting.svg',
+      icon: `/assets/service-icons/${ServiceType.Hosting}.svg`,
     },
     {
       name: 'Domain',
       value: ServiceType.Domain,
-      icon: '/assets/service-icons/domain.svg',
+      icon: `/assets/service-icons/${ServiceType.Domain}.svg`,
     },
     {
       name: 'Server',
       value: ServiceType.Server,
-      icon: '/assets/service-icons/server.svg',
+      icon: `/assets/service-icons/${ServiceType.Server}.svg`,
     },
     {
       name: 'SSL',
       value: ServiceType.SSL,
-      icon: '/assets/service-icons/ssl.svg',
+      icon: `/assets/service-icons/${ServiceType.SSL}.svg`,
     },
     {
       name: 'CDN',
       value: ServiceType.CDN,
-      icon: '/assets/service-icons/cdn.svg',
+      icon: `/assets/service-icons/${ServiceType.CDN}.svg`,
     },
     {
       name: 'سایر محصولات',
       value: ServiceType.Other,
-      icon: '/assets/service-icons/other.svg',
+      icon: `/assets/service-icons/${ServiceType.Other}.svg`,
     },
   ];
 
