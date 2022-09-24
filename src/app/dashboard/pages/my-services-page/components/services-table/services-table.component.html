@@ -1,8 +1,8 @@
 <nz-table
   *ngIf="servicesList"
   [nzFrontPagination]="false"
-  [nzScroll]="{ y: '50vh', x: '0vh' }"
-  #basicTable
+  #serviceTable
+  [nzScroll]="{y: '45vh'}"
   [nzData]="servicesList"
   dir="rtl"
 >
@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of basicTable.data">
+    <tr *ngFor="let data of serviceTable.data">
       <ng-container
         *ngIf="getServiceStatusData(data.status) as serviceStatusTranslator"
       >
