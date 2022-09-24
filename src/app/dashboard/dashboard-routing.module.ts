@@ -14,7 +14,7 @@ const routes: Routes = [
             (m) => m.MyServicesPageModule
           ),
       },
-      { path: '', redirectTo: 'services', pathMatch: 'full' },
+      { path: '', redirectTo: 'my-services', pathMatch: 'full' },
     ],
   },
 ];
