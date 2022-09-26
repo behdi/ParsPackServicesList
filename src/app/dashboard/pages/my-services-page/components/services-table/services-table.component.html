@@ -4,7 +4,6 @@
   #serviceTable
   [nzScroll]="{y: '45vh'}"
   [nzData]="servicesList"
-  dir="rtl"
 >
   <thead>
     <tr>
@@ -28,7 +27,7 @@
           {{ data.name }}
         </td>
         <td nzAlign="center">
-          <span class="fa-number">{{ data.amount | number }}</span> تومان
+          <span class="fa-number">{{ data.amount | number }}</span> تومان (ماهیانه)
         </td>
         <td nzAlign="center">{{ data.nextduedate | shamsiDate }}</td>
         <td nzAlign="center">
