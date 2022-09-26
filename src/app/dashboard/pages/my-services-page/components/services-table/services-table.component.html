@@ -18,7 +18,7 @@
       <ng-container
         *ngIf="data.status | serviceStatus as serviceStatusTranslator"
       >
-        <td>
+        <td class="service-name">
           <nz-badge [nzColor]="serviceStatusTranslator.color"></nz-badge>
           <img
             class="service-icon"
@@ -26,11 +26,11 @@
           />
           {{ data.name }}
         </td>
-        <td nzAlign="center">
+        <td nzAlign="center" class="service-price">
           <span class="fa-number">{{ data.amount | number }}</span> تومان
           (ماهیانه)
         </td>
-        <td nzAlign="center">{{ data.nextduedate | shamsiDate }}</td>
+        <td nzAlign="center" class="service-due">{{ data.nextduedate | shamsiDate }}</td>
         <td nzAlign="center">
           <button
             class="action-button"
