@@ -9,7 +9,8 @@
   margin-left: 0.7rem;
 }
 
-.service-price, .service-due {
+.service-price,
+.service-due {
   font-size: 1.08em;
 }
 
@@ -18,6 +19,11 @@
   width: 100%;
   max-width: 6.5rem;
   font-size: inherit;
+
+  &:disabled {
+    color: var(--pars-disabled-btn-color);
+    border-color: var(--pars-disabled-btn-color);
+  }
 }
 
 :host ::ng-deep {

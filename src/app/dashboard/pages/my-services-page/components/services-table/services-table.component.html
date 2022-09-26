@@ -25,13 +25,13 @@
               [nzStandalone]="false"
               [nzColor]="serviceStatusTranslator.color"
             >
-            <img
-            nz-col
-            class="service-icon"
-            [src]="'assets/service-icons/' + data.type + '.svg'"
-            />
-            <span nz-col>{{ data.name }}</span>
-          </nz-badge>
+              <img
+                nz-col
+                class="service-icon"
+                [src]="'assets/service-icons/' + data.type + '.svg'"
+              />
+              <span nz-col>{{ data.name }}</span>
+            </nz-badge>
           </div>
         </td>
         <td nzAlign="center" class="service-price">
@@ -44,7 +44,7 @@
         <td nzAlign="center">
           <button
             class="action-button"
-            nzType="primary"
+            [nzType]="data.status !== 'Cancelled' ? 'primary' : 'default'"
             nzGhost
             nzBlock
             nz-button
