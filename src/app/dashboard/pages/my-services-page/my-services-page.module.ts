@@ -13,12 +13,14 @@ import { ServicesTableComponent } from './components/services-table/services-tab
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
+import { ServiceStatusPipe } from './pipes/service-status.pipe';
 
 @NgModule({
   declarations: [
     MyServicesPageComponent,
     FilterBarComponent,
     ServicesTableComponent,
+    ServiceStatusPipe,
   ],
   imports: [
     CommonModule,

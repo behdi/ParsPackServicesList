@@ -16,15 +16,4 @@ export class ServicesTableComponent {
     a.name.localeCompare(b.name);
 
   constructor() {}
-
-  getServiceStatusData(status: ServiceStatus): UserServiceStatus {
-    switch (status) {
-      case 'Active':
-        return { color: 'green', action: 'مدیریت سرویس' };
-      case 'Pending':
-        return { color: 'orange', action: 'مشاهده فاکتور' };
-      case 'Cancelled':
-        return { color: 'red', action: 'لغو شده' };
-    }
-  }
 }

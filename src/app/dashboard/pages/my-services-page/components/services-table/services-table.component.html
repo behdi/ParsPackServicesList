@@ -2,7 +2,7 @@
   *ngIf="servicesList"
   [nzFrontPagination]="false"
   #serviceTable
-  [nzScroll]="{y: '45vh'}"
+  [nzScroll]="{ y: '45vh' }"
   [nzData]="servicesList"
 >
   <thead>
@@ -16,7 +16,7 @@
   <tbody>
     <tr *ngFor="let data of serviceTable.data">
       <ng-container
-        *ngIf="getServiceStatusData(data.status) as serviceStatusTranslator"
+        *ngIf="data.status | serviceStatus as serviceStatusTranslator"
       >
         <td>
           <nz-badge [nzColor]="serviceStatusTranslator.color"></nz-badge>
@@ -27,7 +27,8 @@
           {{ data.name }}
         </td>
         <td nzAlign="center">
-          <span class="fa-number">{{ data.amount | number }}</span> تومان (ماهیانه)
+          <span class="fa-number">{{ data.amount | number }}</span> تومان
+          (ماهیانه)
         </td>
         <td nzAlign="center">{{ data.nextduedate | shamsiDate }}</td>
         <td nzAlign="center">
