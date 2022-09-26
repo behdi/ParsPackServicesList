@@ -9,11 +9,11 @@ export class ServiceStatusPipe implements PipeTransform {
   transform(status: ServiceStatus): UserServiceStatus {
     switch (status) {
       case 'Active':
-        return { color: 'green', action: 'مدیریت سرویس' };
+        return { color: '#44D3A7', action: 'مدیریت سرویس' };
       case 'Pending':
-        return { color: 'orange', action: 'مشاهده فاکتور' };
+        return { color: '#FFBA1F', action: 'مشاهده فاکتور' };
       case 'Cancelled':
-        return { color: 'red', action: 'لغو شده' };
+        return { color: '#FE6A93', action: 'لغو شده' };
     }
   }
 }
