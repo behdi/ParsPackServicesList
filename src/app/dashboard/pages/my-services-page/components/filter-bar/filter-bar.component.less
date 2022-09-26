@@ -45,14 +45,20 @@
     display: none;
   }
 
-  :host ::ng-deep .ant-tabs-nav-list,
-  :host ::ng-deep .ant-tabs-tab-btn {
-    width: 100%;
-    text-align: center;
-  }
+  :host ::ng-deep {
+    .ant-tabs-nav-list,
+    .ant-tabs-tab-btn {
+      width: 100%;
+      text-align: center;
+    }
 
-  :host ::ng-deep .ant-tabs-tab {
-    flex: 1;
-    text-align: center;
+    .ant-tabs-tab {
+      flex: 1;
+      text-align: center;
+    }
+
+    .ant-tabs-ink-bar {
+      --pars-tabs-ink-bar-color: var(--pars-tabs-compact-ink-bar-color);
+    }
   }
 }
